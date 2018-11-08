@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">RAILS API TEST</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	<ul class="navbar-nav mr-auto">
+		<li class="nav-item">
+			<form class="form form-horizontal" action="/devise-by-name", method="POST">
+				<%= hidden_field_tag :authenticity_token, form_authenticity_token %>				<input type="text" name="devise_name" placeholder="Tape the devise name you search for" />
+				<input type="submit" value="Rechercher une devise " />
+			</form>
+		</li>
+
+			<li class="nav-item">
+				<a class="nav-link" href="/devises" /> Get all Devises </a>
+			</li>
+
+			<li class="nav-item">
+			<form class="form form-horizontal" action="/", method="POST">
+				<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+				<input type="text" name="movie_name" placeholder="Tape the movie name you search for" />
+				<input type="submit" value="Rechercher un film" />
+			</form>
+		</li>
+	</ul>
+</div>
+</nav>
+<div class="container">
+	<% if @devise %>
+		<table class="table table-stripped">
+			<tr>
+					<th> Name </th>
+					<th> Price </th>
+			</tr>
+
+			<tr>
+				<td> <%= @devise.name %> </td>
+				<td> <%= @devise.price %> </td>
+			</tr>
+		</table>
+	<% end %>
+
+	<% if @devises %>
+		<table class="table table-stripped">
+			<tr>
+				<td> Index </td>
+				<th> Name </th>
+				<th> Price </th>
+			</tr>
+			<% @devises.each_with_index do |d, index|%>
+				<tr>
+					<td> <%= index + 1 %> </td>
+					<td> <%= d.name %> </td>
+					<td> <%= d.price %> </td>
+				</tr>
+			<% end %>
+		</table>
+	<% end %>
+
+		<% if @movies %>
+		<table class="table table-condensed*">
+			<tr>
+				<th> Index </th>
+				<th> Image </th>
+				<th> Original Title </th>
+				<th> Release Date </th>
+				<th> Director </th>
+				<th> Overview </th>
+			</tr>
+			<% @movies.each_with_index do |m, index|%>
+				<tr>
+					<td> <%= index + 1 %> </td>
+					<td> <img src="http://image.tmdb.org/t/p/w200/<%= m.backdrop_path %>"alt="None picture available."/> </td>
+					<td> <%= m.original_title %> </td>
+					<td> <%= m.release_date %> </td>
+					<td>
+						<%= m.director.name %>
+					</td>
+					<td> <%= m.overview %> </td>
+				</tr>
+			<% end %>
+		</table>
+	<% end %>
+</div>
