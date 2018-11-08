@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: rails-service_production
-  username: rails-service
-  password: <%= ENV['RAILS-SERVICE_DATABASE_PASSWORD'] %>
+  username: seriald
+  password: <%= ENV['RAILS_SERVICE_PROJECT_DATABASE_PASSWORD'] %>

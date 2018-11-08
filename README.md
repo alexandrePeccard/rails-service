@@ -1,24 +1,19 @@
 # README
+## This application is used to test some stuff on Ruby on Rails like services and apis call.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
+* Ruby version : 2.5.1
 
 * Database creation
+```
+rails db:create
+rails db:migrate
+```
 
-* Database initialization
+* App initialization :
 
-* How to run the test suite
+```
+rails console
+Parser.new.perform
+```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Production Link : https://rails-api-test-thp.herokuapp.com
